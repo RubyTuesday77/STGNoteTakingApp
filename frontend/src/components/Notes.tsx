@@ -7,10 +7,11 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Container';
 
 
-const Notes = (props) => {
+const Notes = (props: { showAlert: (arg0: string, arg1: string) => void; }) => {
     let navigate = useNavigate();
 
     const context = useContext(NoteContext);
+    // @ts-ignore
     const { notes, getNotes, editNote } = context;
 
     useEffect(() => {
@@ -32,7 +33,8 @@ const Notes = (props) => {
         etag: ''
     });
 
-    const updateNote = (currentNote) => {
+    const updateNote = (currentNote: { _id: any; title: any; description: any; tag: any; }) => {
+        // @ts-ignore
         ref.current.click();
         setNote({
             eid: currentNote._id,
@@ -42,7 +44,7 @@ const Notes = (props) => {
         });
     };
 
-    const onChange = (e) => {
+    const onChange = (e: { target: { name: any; value: any; }; }) => {
         setNote({
             ...note,
             [e.target.name]: e.target.value
@@ -51,7 +53,8 @@ const Notes = (props) => {
 
 
 
-    const handleClick = (e) => {
+    const handleClick = () => {
+        // @ts-ignore
         refClose.current.click();
         editNote(note.eid, note.etitle, note.edescription, note.etag);
         props.showAlert('Note updated successfully!', 'success');
@@ -96,7 +99,7 @@ const Notes = (props) => {
                 <div className='row my-3'>
                         <h2>Your Notes</h2>
                         { notes.length === 0 && 'No Notes to display' }
-                        { notes.map((note) => {
+                        { notes.map((note: { _id: React.Key | null | undefined; }) => {
                             return <NoteItem key={ note._id } updateNote={ updateNote } showAlert={ props.showAlert } note={ note } />
                         }) }
                 </div>

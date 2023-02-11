@@ -14,4 +14,3 @@ const connectDb = () => {
 };
 
 module.exports = connectDb;
-// add comments to the code

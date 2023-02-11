@@ -2,7 +2,7 @@ import React from 'react';
 import AddNote from './AddNote';
 import Notes from './Notes';
 
-const Home = (props) => {
+const Home = (props: { showAlert: any; }) => {
     const { showAlert } = props;
 
     return (

@@ -16,10 +16,11 @@ function App() {
     const [alert, setAlert] = useState(null);
 
     // Function to show alert which takes 2 args, msg & type
-    const showAlert = (message, type) => {
+    const showAlert = (message: string, type: any) => {
         setAlert({
-            msg: message,
-            type: type,
+          // @ts-ignore
+          msg: message,
+          type: type,
         });
         setTimeout(() => {
             setAlert(null);
@@ -32,15 +33,20 @@ function App() {
             <NoteState>
                 <Router>
                     <Header />
-                <Alert alert={ alert } />
-                <div className='container'>
-                    <Routes>
-                        <Route exact path='/' element={ <Home showAlert={ showAlert } /> } />
-                        <Route exact path='/about' element={ <About /> } />
-                        <Route exact path='/login' element={ <Login showAlert={ showAlert } /> } />
-                        <Route exact path='/signup' element={ <Signup showAlert={ showAlert } /> } />
-                    </Routes>
-                </div>
+                    {/* @ts-ignore */}
+                    <Alert alert={ alert } />
+                    <div className='container'>
+                        <Routes>
+                            {/* @ts-ignore */}
+                            <Route exact path='/' element={ <Home showAlert={ showAlert } /> } />
+                            {/* @ts-ignore */}
+                            <Route exact path='/about' element={ <About /> } />
+                            {/* @ts-ignore */}
+                            <Route exact path='/login' element={ <Login showAlert={ showAlert } /> } />
+                            {/* @ts-ignore */}
+                            <Route exact path='/signup' element={ <Signup showAlert={ showAlert } /> } />
+                        </Routes>
+                    </div>
                 </Router>
             </NoteState>
         </>

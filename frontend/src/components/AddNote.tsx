@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-const AddNote = (props) => {
+const AddNote = (props: { showAlert: (arg0: string, arg1: string) => void; }) => {
     const context = useContext(NoteContext);
+    // @ts-ignore
     const { addNote } = context;
 
     const [note, setNote] = useState({
@@ -14,14 +15,14 @@ const AddNote = (props) => {
         tag: '',
     });
 
-    const onChange = (e) => {
+    const onChange = (e: { target: { name: any; value: any; }; }) => {
         setNote({
             ...note,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleClick = (e) => {
+    const handleClick = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
         setNote({ title: '', description: '', tag: '' });

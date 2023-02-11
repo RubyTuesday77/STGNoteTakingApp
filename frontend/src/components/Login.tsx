@@ -5,14 +5,14 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 
-const Login = (props) => {
+const Login = (props: { showAlert: (arg0: string, arg1: string) => void; }) => {
 
     // Declare server host
     const host = 'http://localhost:5001';
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const response = await fetch(`${host}/api/auth/login`, {
       method: 'POST',
@@ -35,7 +35,7 @@ const Login = (props) => {
     }
   };
 
-  const onChange = (e) => {
+  const onChange = (e: { target: { name: any; value: any; }; }) => {
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value,
