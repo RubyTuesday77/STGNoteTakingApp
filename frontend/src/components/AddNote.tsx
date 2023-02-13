@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-const AddNote = (props) => {
+const AddNote = (props: { showAlert: (arg0: string, arg1: string) => void; }) => {
     const context = useContext(NoteContext);
+    // @ts-ignore
     const { addNote } = context;
 
     const [note, setNote] = useState({
@@ -14,14 +15,14 @@ const AddNote = (props) => {
         tag: '',
     });
 
-    const onChange = (e) => {
+    const onChange = (e: { target: { name: any; value: any; }; }) => {
         setNote({
             ...note,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleClick = (e) => {
+    const handleClick = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
         setNote({ title: '', description: '', tag: '' });
@@ -37,7 +38,7 @@ const AddNote = (props) => {
                     <Form.Control type='text' value={ note.title } id='title' name='title' aria-describedby='emailHelp' minLength={ 2 } required onChange={ onChange } />
                 </Form.Group>
                 <Form.Group className='mb-3'>
-                    <Form.Label>Content</Form.Label>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control type='text' as='textarea' rows={ 3 } id='description' name='description' value={ note.description } onChange={ onChange } />
                 </Form.Group>
                 <Form.Group className='mb-3'>

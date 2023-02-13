@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-const Signup = (props) => {
+const Signup = (props: { showAlert: (arg0: string, arg1: string) => void; }) => {
 
     // Declare server host
     const host = 'http://localhost:5001';
@@ -24,7 +24,7 @@ const Signup = (props) => {
     const navigate = useNavigate();
 
     // POST request to update values of credentials
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if(credentials.password !== credentials.cpassword) {
             setConfirmPwd('Password does not match');
@@ -54,7 +54,7 @@ const Signup = (props) => {
     };
 
     // To update state of text as user types
-    const onChange = (e) => {
+    const onChange = (e: { target: { name: any; value: any; }; }) => {
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
@@ -82,7 +82,7 @@ const Signup = (props) => {
                 <Form.Group className='mb-3'>
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control type='password' id='cpassword' name='cpassword' onChange={ onChange } minLength={ 8 } autoComplete='off' required />
-                    <Form.Text id='confirmPwd' name='confirmPwd' style={{ color: 'red' }}>{ confirmPwd }</Form.Text>
+                    <Form.Text id='confirmPwd' style={{ color: 'red' }}>{ confirmPwd }</Form.Text>
                 </Form.Group>
                 <Button type='submit' variant='primary'disabled={ credentials.password.length < 8 || credentials.cpassword.length < 8 }>Submit</Button>
             </Form>
