@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Alert = (props) => {
-    const capitalize = (word) => {
+const Alert = (props: { alert: { type: any; msg: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }; }) => {
+    const capitalize = (word: string) => {
         if(word === 'danger') {
             word = 'error';
         }
