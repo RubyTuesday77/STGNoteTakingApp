@@ -3,16 +3,16 @@ import NoteContext from '../context/NoteContext';
 import Accordion from "react-bootstrap/Accordion";
 
 
-const NoteItem = (props) => {
+const NoteItem = (props: { showAlert:  (msg: string, type: string) => void; note: any; updateNote: any; }) => {
     const context = useContext(NoteContext);
-    const { deleteNote } = context;
+    const { deleteNote }: any = context;
     const { note, updateNote } = props;
 
      
     return (
         <Accordion defaultActiveKey="1">
             <Accordion.Item eventKey="1">
-                <Accordion.Header style={{ "font-weight": "bold" }}>{ note.title }</Accordion.Header>
+                <Accordion.Header style={{ "fontWeight": "bold" }}>{ note.title }</Accordion.Header>
                 <Accordion.Body>
                     <p>{ note.description }</p>
                     {/* Clicking on the trashcan icon will call the delete function and pass the note id 

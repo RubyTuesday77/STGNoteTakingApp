@@ -1,7 +1,12 @@
 import React from 'react';
 
-const Alert = (props) => {
-    const capitalize = (word) => {
+// added Interface
+interface AlertProps {
+    alert: { type: string, msg: string } | null;
+}
+
+const Alert = (props: AlertProps) => {
+    const capitalize = (word: string) => {
         if(word === 'danger') {
             word = 'error';
         }

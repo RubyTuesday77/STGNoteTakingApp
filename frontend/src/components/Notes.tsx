@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Container';
+import { NonNullExpression } from 'typescript';
 
 
-const Notes = (props) => {
+const Notes = (props: { showAlert: (msg: string, type: string) => void; }) => {
     let navigate = useNavigate();
 
     const context = useContext(NoteContext);
-    const { notes, getNotes, editNote } = context;
+    const { notes, getNotes, editNote }: any = context;
 
     useEffect(() => {
         if(localStorage.getItem('authToken')) {
@@ -22,8 +23,8 @@ const Notes = (props) => {
         }
     }, []);
 
-    const ref = useRef(null);
-    const refClose = useRef(null);
+    const ref = useRef<HTMLButtonElement>(null);
+    const refClose = useRef<HTMLButtonElement | null>(null);
 
     const [note, setNote] = useState({
         eid: '',
@@ -32,8 +33,10 @@ const Notes = (props) => {
         etag: ''
     });
 
-    const updateNote = (currentNote) => {
-        ref.current.click();
+    const updateNote = (currentNote: { _id: string; title: string; description: string; tag: string; }) => {
+        if (ref.current) {
+            ref.current.click();
+        }
         setNote({
             eid: currentNote._id,
             etitle: currentNote.title,
@@ -42,7 +45,7 @@ const Notes = (props) => {
         });
     };
 
-    const onChange = (e) => {
+    const onChange = (e: { target: { name: string; value: string | null; }; }) => {
         setNote({
             ...note,
             [e.target.name]: e.target.value
@@ -50,11 +53,12 @@ const Notes = (props) => {
     };
 
 
-
-    const handleClick = (e) => {
-        refClose.current.click();
-        editNote(note.eid, note.etitle, note.edescription, note.etag);
-        props.showAlert('Note updated successfully!', 'success');
+    const handleClick = () => {
+        if (refClose.current) {
+            refClose.current.click();
+            editNote(note.eid, note.etitle, note.edescription, note.etag);
+            props.showAlert("Note updated successfully!", "success");
+        }
     };
 
     return (
@@ -96,7 +100,7 @@ const Notes = (props) => {
                 <div className='row my-3'>
                         <h2>Your Notes</h2>
                         { notes.length === 0 && 'No Notes to display' }
-                        { notes.map((note) => {
+                        { notes.map((note: { _id: React.Key | null | undefined; }) => {
                             return <NoteItem key={ note._id } updateNote={ updateNote } showAlert={ props.showAlert } note={ note } />
                         }) }
                 </div>
