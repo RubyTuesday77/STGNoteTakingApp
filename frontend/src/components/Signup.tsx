@@ -8,7 +8,7 @@ interface SignupProps {
     showAlert: (msg: string, type: string) => void;
 }
 
-const Signup = (props: SignupProps) => {
+const Signup = (props: SignupProps): JSX.Element => {
 
     // Declare server host
     const host = 'http://localhost:5001';
@@ -28,7 +28,8 @@ const Signup = (props: SignupProps) => {
     const navigate = useNavigate();
 
     // POST request to update values of credentials
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }): Promise<void> => {
+
         e.preventDefault();
         if(credentials.password !== credentials.cpassword) {
             setConfirmPwd('Password does not match');
@@ -58,7 +59,7 @@ const Signup = (props: SignupProps) => {
     };
 
     // To update state of text as user types
-    const onChange = (e: { target: { name: any; value: any; }; }) => {
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
@@ -71,21 +72,21 @@ const Signup = (props: SignupProps) => {
             <Form onSubmit={ handleSubmit }>
                 <Form.Group className='mb-3'>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type='text' id='name' name='name' onChange={ onChange } aria-describedby='emailHelp' minLength={ 3 } required />
+                    <Form.Control type='text' id='name' name='name' onChange={ onChange } aria-describedby='emailHelp' minLength={ 3 } maxLength={ 30 } required />
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type='email' id='email' name='email' onChange={ onChange } aria-describedby='emailHelp' required />
+                    <Form.Control type='email' id='email' name='email' onChange={ onChange } aria-describedby='emailHelp' maxLength={ 320 } required />
                     <Form.Text id='emailHelp' className='text-muted'>We'll never share your email address with anyone</Form.Text>
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' id='password' name='password' onChange={ onChange } minLength={ 8 } autoComplete='off' required />
+                    <Form.Control type='password' id='password' name='password' onChange={ onChange } minLength={ 8 } maxLength={ 72 } autoComplete='off' required />
                     <Form.Text id='password' className='text-muted'>Password must be at least 8 characters</Form.Text>
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type='password' id='cpassword' name='cpassword' onChange={ onChange } minLength={ 8 } autoComplete='off' required />
+                    <Form.Control type='password' id='cpassword' name='cpassword' onChange={ onChange } minLength={ 8 } maxLength={ 72 } autoComplete='off' required />
                     <Form.Text id='confirmPwd' style={{ color: 'red' }}>{ confirmPwd }</Form.Text>
                 </Form.Group>
                 <Button type='submit' variant='primary'disabled={ credentials.password.length < 8 || credentials.cpassword.length < 8 }>Submit</Button>
