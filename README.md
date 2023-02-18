@@ -45,21 +45,21 @@
 ## About the Project
 
 STG Note-Taker is a web-based app for creating and editing notes. The user will initially sign up for an account and subsequently log in to add, edit and delete notes.
-![Desktop Layout](addons/STG-screenshot.png?raw=true)
+![Desktop Layout](supportfiles/STG-screenshot.png?raw=true)
 * The user will need to sign up before creating notes:
-    ![Signup Form](addons/Signup.png?raw=true)
+    ![Signup Form](supportfiles/Signup.png?raw=true)
 * The user will log in to add, edit, or delete notes:
-    ![Login Form](addons/Login.png?raw=true)
+    ![Login Form](supportfiles/Login.png?raw=true)
 * Notes can be composed with fields for Title, Content, and Tags/Keywords (optional):
-    ![Add Note](addons/addnote.png?raw=true)
+    ![Add Note](supportfiles/addnote.png?raw=true)
 * Individual notes are displayed in an Accordion format, and can be expanded or collapsed as needed. Clicking on the edit or trash icon on individual notes will allow the user the edit or delete notes, respectively, after they are created:
-    ![Individual Note](addons/note-example.png?raw=true)
+    ![Individual Note](supportfiles/note-example.png?raw=true)
 * Trashcan Icon - for deleting notes:
-    ![Delete](addons/Delete-icon.png?raw=true)
+    ![Delete](supportfiles/Delete-icon.png?raw=true)
 * Edit Icon:
-    ![Individual Note](addons/Edit-icon.png?raw=true)
+    ![Individual Note](supportfiles/Edit-icon.png?raw=true)
 * The edit icon will create a pop-up window that allows the user to edit any fields:
-    ![Edit Pop-Up](addons/Edit-screenshot.png?raw=true)
+    ![Edit Pop-Up](supportfiles/Edit-screenshot.png?raw=true)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
