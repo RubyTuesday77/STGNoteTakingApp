@@ -12,7 +12,7 @@ const NoteItem = (props) => {
     return (
         <Accordion defaultActiveKey="1">
             <Accordion.Item eventKey="1">
-                <Accordion.Header style={{ "font-weight": "bold" }}>{ note.title }</Accordion.Header>
+                <Accordion.Header style={{ fontWeight: "bold" }}>{ note.title }</Accordion.Header>
                 <Accordion.Body>
                     <p>{ note.description }</p>
                     {/* Clicking on the trashcan icon will call the delete function and pass the note id 

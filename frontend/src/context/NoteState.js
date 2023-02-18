@@ -2,8 +2,6 @@ import NoteContext from './NoteContext';  // Import our context
 import React, { useState } from 'react';
 
 const NoteState = (props) => {
-  // Declare the server host
-  const host = 'http://localhost:5001';
 
   // Declare an object array
   const notesInitial = [];
@@ -13,7 +11,7 @@ const NoteState = (props) => {
 
   // API call to fetch all notes using GET:
   const getNotes = async () => {
-    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}api/notes/fetchallnotes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,14 +30,17 @@ const NoteState = (props) => {
   user.id will be inserted by backend through authToken
   note.id will be generated automatically by mongo */
   const addNote = async (title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/addnote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem('authToken'),
-      },
-      body: JSON.stringify({ title, description, tag }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_SERVER_URL}api/notes/addnote`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("authToken"),
+        },
+        body: JSON.stringify({ title, description, tag }),
+      }
+    );
     const note = await response.json();
 
     // Use concat (not push) as it appends new item to array
@@ -48,14 +49,13 @@ const NoteState = (props) => {
 
   // API call to delete a note using DELETE
   const deleteNote = async (id) => {
-    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'auth-token': localStorage.getItem('authToken'),
       },
     });
-    const json = await response.json();
     // console.log(json);
 
     /* API call removes note from DB and UI. We then pass a filter function to all the existing notes and filter
@@ -68,14 +68,17 @@ const NoteState = (props) => {
 
   // Edit a note:
   const editNote = async (id, title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'auth-token': localStorage.getItem('authToken'),
-      },
-      body: JSON.stringify({ title, description, tag }),
-    });
+    await fetch(
+      `${process.env.REACT_APP_SERVER_URL}api/notes/updatenote/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("authToken"),
+        },
+        body: JSON.stringify({ title, description, tag }),
+      }
+    );
     // const json = await response.json()
 
     let newNotes = JSON.parse(JSON.stringify(notes));

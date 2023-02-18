@@ -1,97 +1,180 @@
-# STG Note-Taker
+<a name="readme-top"></a>
 
-STG Note-Taker is an MERN fullstack app for creating, editing and deleting notes
-
-Used separate folders for frontend and server
-
-### Frontend:
-- Created frontend folder using React.JS, `npx create-react-app frontend`
-- Installed dependencies:
-    - React router: `npm i react-router-dom`
-    - React Bootstrap: `npm i react-bootstrap`
-- Run using `npm start`
-
-### Server:
-- Created server folder
-- Installed dependencies:
-    - Nodemon: `npm install -g nodemon`
-    - Express: `npm i express`
-    - Express validator: `npm i express-validator`
-    - Mongoose: `npm i mongoose`
-    - Bcrypt: `npm i bcrypt`
-    - Jsonwebtoken: `npm i jsonwebtoken`
-    - Cors: `npm i cors`
-    - Dotenv: `npm i dotenv`
-- Run using `nodemon`
+<!-- PROJECT LOGO / TITLE -->
+<br />
+<div align="center">
+    <a href="https://github.com/RubyTuesday77/STGNoteTakingApp">
+        <img src="addons/stglogo.png" alt="logo" />
+    </a>
+    <h3 align="center">STG Note-Taker</h3>
+</div>
 
 
-# Getting Started with Create React App
+<!-- TABLE OF CONTENTS -->
+<details>
+    <summary>Table of Contents</summary>
+    <ol>
+        <li>
+            <a href="#about-the-project">About the Project</a>
+            <ul>
+                <li><a href="#built-with">Built With</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#application-endpoints">Application Endpoints</a>
+            <ul>
+                <li><a href="#application-endpoints">Server API</a></li>
+                <li><a href="#application-endpoints">React App</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#getting-started">Getting Started</a>
+            <ul>
+                <li><a href="#prerequisites">Prerequisites</a></li>
+                <li><a href="#installation">Installation</a></li>
+            </ul>
+        </li>
+        <li><a href="#roadmap">Roadmap / Future Updates</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ol>
+</details>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- ABOUT THE PROJECT -->
+## About the Project
 
-In the project directory, you can run:
+STG Note-Taker is a web-based app for creating and editing notes. The user will initially sign up for an account and subsequently log in to add, edit and delete notes.
+![Desktop Layout](addons/STG-screenshot.png?raw=true)
+* The user will need to sign up before creating notes:
+    ![Signup Form](addons/Signup.png?raw=true)
+* The user will log in to add, edit, or delete notes:
+    ![Login Form](addons/Login.png?raw=true)
+* Notes can be composed with fields for Title, Content, and Tags/Keywords (optional):
+    ![Add Note](addons/addnote.png?raw=true)
+* Individual notes are displayed in an Accordion format, and can be expanded or collapsed as needed. Clicking on the edit or trash icon on individual notes will allow the user the edit or delete notes, respectively, after they are created:
+    ![Individual Note](addons/note-example.png?raw=true)
+* Trashcan Icon - for deleting notes:
+    ![Delete](addons/Delete-icon.png?raw=true)
+* Edit Icon:
+    ![Individual Note](addons/Edit-icon.png?raw=true)
+* The edit icon will create a pop-up window that allows the user to edit any fields:
+    ![Edit Pop-Up](addons/Edit-screenshot.png?raw=true)
 
-### `npm start`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Built With
 
-### `npm test`
+STG Note-Taker is a full-stack MERN app built with the following frameworks/libraries:
+* [![React.js](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+* [![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+* [![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+* [![MongoDB](https://custom-icon-badges.demolab.com/badge/-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+* [![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- APP ENDPOINTS -->
+## Application Endpoints
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Server API (http://localhost:5000)
+| Method | Path                        | Purpose                  |
+| ------ | ----------------------------| -------------------------|
+| GET    | /api                        | Home page                |
+| GET    | /api/auth                   | User route               |
+| POST   | /api/auth/createuser        | Create a user            |
+| POST   | /api/auth/login             | Authenticate a user      |
+| POST   | /api/auth/getuser           | Get details of a user    |
+| GET    | /api/notes                  | Notes route              |
+| GET    | /api/notes/fetchallnotes    | Get all notes for a user |
+| POST   | /api/notes/addnote          | Let user add a note      |
+| PUT    | /api/notes/updatenote/:id   | Let user edit a note     |
+| DELETE | /api/notes/deletenote/:id   | Let user delete a note   |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### React App (http://localhost:3000)
+| Component                | Purpose                                                               |
+| ------------------------ | ----------------------------------------------------------------------|
+| `components/About.js`    | Component directing to About page (/about)                            |
+| `components/AddNote.js`  | Component on Home page that consists of form for adding notes         |
+| `components/Alert.js`    | Component that creates an alert for the NoteState (in context folder) |
+| `components/Home.js`     | Home page (/) - contains Notes and AddNote components                 |
+| `components/Login.js`    | Component directing to Login page (/login)                            |
+| `components/Navbar.js`   | Navigation bar at top of Home (/), /login, /signup, and /about pages  |
+| `components/NoteItem.js` | Component representing individual note that make up Notes component   |
+| `components/Notes.js`    | Component on Home page that includes individual note item components  |
+| `components/Signup.js`   | Component directing to Signup page (/signup)                          |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- GETTING STARTED -->
+## Getting Started
+At this time, STG Note-Taker has not yet been deployed so it must be installed locally.
 
-## Learn More
+### Prerequisites
+In order to set STG Note-Taker up on your local computer you will need to create a database on MongoDB. You can refer to the MongoDB documentation at https://www.mongodb.com/docs/atlas/getting-started/ for instructions on how to do this.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
+Once you have gotten a MongoDB database set up (see Prerequisites above):
+1. Fork the repository https://github.com/RubyTuesday77/STGNoteTakingApp to your GitHub account.
+2. Clone the repository to your local machine
+    ```sh
+   git clone https://github.com/RubyTuesday77/STGNoteTakingApp.git
+   ```
+3. `cd` into the `frontend` folder in a separate terminal:
+    * Run `npm install` to install dependencies.
+    * Create an `.env` file in the root of the folder that includes the following environmental variable:
+    ```sh
+        REACT_APP_SERVER_URL=http://localhost:5000/
+    ```
+4. `cd` into the `server` folder in a new, separate terminal:
+    * Run `npm install` to install dependencies.
+    * Create an `.env` file in the root of the folder that includes the following environmental variables:
+    ```sh
+        # Make sure the port number matches the one used in the server .env
+        PORT=5000
 
-### Code Splitting
+        # The <username>, <password>, <hostname>, and <database> will be for the MongoDB database you've created
+        MONGO_URI=mongodb+srv://<username>:<password>@<hostname>/<database>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+        # <token> can include any sequence of text or numbers you want to use as a keyword - no spaces
+        JWT_SECRET=<token>
+    ```
+5. Finally, run `npm start` in each terminal so that the server API and frontend React app are running at the same time.
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+<!-- ROADMAP / FUTURE UPDATES -->
+## Roadmap / Future Updates
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [ ] Deploy app to Amazon Web Services.
+- [ ] Update Tags/Keywords to be clickable and return all notes with the specified term.
+- [ ] Update User password to require upper and lowercase alphanumeric and special characters. Right now it requires only 8 characters.
+- [ ] Add pagination to the Notes to accommodate high volume.
 
-### Advanced Configuration
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<!-- LICENSE -->
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-### `npm run build` fails to minify
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- CONTACT -->
+## Contact
+
+* Email: tysonlannon@gmail.com
+* GitHub: https://github.com/RubyTuesday77
+* LinkedIn: https://www.linkedin.com/in/tysonlannon/
+* Twitter: [@tysonlannon](https://twitter.com/tysonlannon)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

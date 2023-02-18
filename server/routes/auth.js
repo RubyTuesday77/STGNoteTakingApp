@@ -20,8 +20,6 @@ const User = require("../models/User");
 // const { json } = require('express')
 // require("dotenv").config();
 
-JWT_SECRET = "Getonthisnoteapp";
-
 // Route 1: Create a user using POST '/api/auth/createuser'
 router.post("/createuser",
   [
@@ -70,7 +68,7 @@ router.post("/createuser",
       console.log(data);
 
       // A user sign-up will create an authToken it takes data(i.e'userid') and secret key for token creation(its the syntax) //as it takes userid(every auth token is unique for that particular user id)
-      const authToken = jwt.sign(data, JWT_SECRET);
+      const authToken = jwt.sign(data, process.env.JWT_SECRET);
       success = true;
       console.log(authToken);
       res.json({ success, authToken });
@@ -138,7 +136,7 @@ router.post(
       };
 
       // Send JWT Token when logging in. authToken is like a session id for a particular user
-      const authToken = jwt.sign(data, JWT_SECRET);
+      const authToken = jwt.sign(data, process.env.JWT_SECRET);
       success = true;
       res.json({
         success,

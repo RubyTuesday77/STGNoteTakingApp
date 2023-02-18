@@ -5,8 +5,7 @@ const cors = require('cors');
 
 connectDB();
 const app = express();
-require('dotenv').config();
-const port = process.env.PORT
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -24,6 +23,6 @@ app.use('/api/auth', userRoutes);
 const notesRoutes = require('./routes/notes');
 app.use('/api/notes', notesRoutes);
 
-app.listen(port, () => {
-    console.log(`STG Note-Taker backend listening on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`STG Note-Taker backend listening on port ${process.env.PORT}`);
 });

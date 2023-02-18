@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 
+mongoose.set("strictQuery", false);
+
 const connectDb = () => {
     mongoose.connect(process.env.MONGO_URI,
       {
@@ -14,4 +16,3 @@ const connectDb = () => {
 };
 
 module.exports = connectDb;
-// add comments to the code

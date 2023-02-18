@@ -7,7 +7,7 @@ const Home = (props) => {
 
     return (
         <div>
-            <div className='container' style={{ 'width': '80%' }}>
+            <div className='container' style={{ width: '80%' }}>
                 <Notes showAlert={ showAlert }/>
             </div>
             <AddNote showAlert={ showAlert }/>

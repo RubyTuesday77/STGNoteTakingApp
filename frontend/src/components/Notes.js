@@ -49,8 +49,6 @@ const Notes = (props) => {
         });
     };
 
-
-
     const handleClick = (e) => {
         refClose.current.click();
         editNote(note.eid, note.etitle, note.edescription, note.etag);
@@ -78,7 +76,7 @@ const Notes = (props) => {
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Edit Content</Form.Label>
-                                        <Form.Control type="text" id="edescription" name="edescription" value={ note.edescription } onChange={ onChange } />
+                                        <Form.Control type="text" as='textarea' style={{ height: '100px' }} id="edescription" name="edescription" value={ note.edescription } onChange={ onChange } />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Edit Tags/Keywords</Form.Label>
