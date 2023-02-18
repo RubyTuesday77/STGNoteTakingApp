@@ -4,7 +4,7 @@
 <br />
 <div align="center">
     <a href="https://github.com/RubyTuesday77/STGNoteTakingApp">
-        <img src="addons/stglogo.png" alt="logo" />
+        <img src="supportfiles/stglogo.png" alt="logo" />
     </a>
     <h3 align="center">STG Note-Taker</h3>
 </div>
