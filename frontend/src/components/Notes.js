@@ -93,8 +93,8 @@ const Notes = (props) => {
                 </Modal>
                 <div className='row my-3'>
                         <h2>Your Notes</h2>
-                        { notes.length === 0 && 'No Notes to display' }
-                        { notes.map((note) => {
+                        { Array.isArray(notes) && notes.length === 0 && 'No Notes to display' }
+                        { Array.isArray(notes) && notes.map((note) => {
                             return <NoteItem key={ note._id } updateNote={ updateNote } showAlert={ props.showAlert } note={ note } />
                         }) }
                 </div>
